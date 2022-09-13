@@ -18,6 +18,13 @@ export default function Settings() {
 						</label>
 						<input type="file" id="fileInput" style={{ display: "none" }} />
 					</div>
+					<label>Username</label>
+					<input type="text" placeholder="Reuben" />
+					<label>Email</label>
+					<input type="email" placeholder="Reuben@gmail.com" />
+					<label>Password</label>
+					<input type="password" />
+					<button className="settingsSubmit">Update</button>
 				</form>
 			</div>
 			<Sidebar />
