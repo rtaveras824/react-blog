@@ -1,33 +1,34 @@
+import { Link } from 'react-router-dom';
 import './post.css';
 
-export default function Post() {
+export default function Post({ post }) {
 	return (
 		<div className="post">
-			<img className="postImg" src="https://i.picsum.photos/id/348/600/400.jpg?hmac=4Dcyl-sUcE8E-OcM3fH9B9ZjixPbKGEnQ-FUPaZzQ4Y" alt="" />
+		{
+			post.photo && 
+			<img className="postImg" src={ post.photo } alt="" />
+		}
 			<div className="postInfo">
 				<div className="postCats">
-					<span className="postCat">Music</span>
-					<span className="postCat">Life</span>
+					{
+						post.categories.map((c) => (
+							<span className="postCat">{ c.name }</span>
+						))
+					}
 				</div>
-				<span className="postTitle">
-					Lorem Impusm
-				</span>
+				<Link to={`/post/${post._id}`} className="link">
+					<span className="postTitle">
+						{ post.title }
+					</span>
+				</Link>
+				
 				<hr />
-				<span className="postDate">1 hour ago</span>
+				<span className="postDate">{ new Date(post.createdAt).toDateString() }</span>
 			</div>
 			<p className="postDesc">
-			quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
-consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
-cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
-proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
-quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
-consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
-cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
-proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
-quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
-consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
-cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
-proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+			{
+				post.desc
+			}
 			</p> 
 		</div>
 	)

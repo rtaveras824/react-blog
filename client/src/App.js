@@ -9,13 +9,26 @@ import {
   BrowserRouter as Router,
   Switch,
   Route,
-  Link
+  Link, 
+  useLocation
 } from "react-router-dom";
+import { useEffect } from "react";
+
+function ScrollToTop() {
+  const { pathname } = useLocation();
+
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, [pathname]);
+
+  return null;
+}
 
 function App() {
   const user = false;
   return (
     <Router>
+      <ScrollToTop />
       <TopBar />
       <Switch>
         <Route exact path="/">
