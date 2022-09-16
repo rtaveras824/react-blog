@@ -12,7 +12,8 @@ import {
   Link, 
   useLocation
 } from "react-router-dom";
-import { useEffect } from "react";
+import { useEffect, useContext } from "react";
+import { Context } from './context/Context';
 
 function ScrollToTop() {
   const { pathname } = useLocation();
@@ -25,7 +26,7 @@ function ScrollToTop() {
 }
 
 function App() {
-  const user = false;
+  const { user } = useContext(Context);
   return (
     <Router>
       <ScrollToTop />
